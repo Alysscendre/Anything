@@ -1,11 +1,16 @@
 export default class NotesAPI {
+    // This is a static method from the local storage.
     static getAllNotes() {
+        
         const notes = JSON.parse(localStorage.getItem("notesapp-notes") || "[]");
+        // variable used to sort the notes by the date they were updated.
 
         return notes.sort((a, b) => {
             return new Date(a.updated) > new Date(b.updated) ? -1 : 1;
         });
     }
+
+
 
     static saveNote(noteToSave) {
         const notes = NotesAPI.getAllNotes();
